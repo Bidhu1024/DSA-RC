@@ -1,8 +1,21 @@
-function x (){
- a = 5;
-    function y(){
-        console.log(a);
-    }
-    y()
+// function x (){
+//  a = 5;
+//     function y(){
+//         console.log(a);
+//     }
+//     y()
+// }
+// x()
+
+//numericals
+
+function createBase(num){ //correct
+return function(b){
+    return num + b
 }
-x()
+
+}
+
+let addSix = createBase(6)
+let ans =addSix(10)
+console.log(ans)
