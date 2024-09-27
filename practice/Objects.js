@@ -31,3 +31,14 @@
 // }
 // multiplyWithTwo(nums)
 // console.log(nums)
+
+let name = {
+    fname:"anyrhing",
+    mark:123,
+    print:function(){
+        let mark = "134"
+        console.log("my mark is ",this.mark)
+    }
+}
+
+name.print()
