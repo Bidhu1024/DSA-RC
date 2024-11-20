@@ -1,0 +1,148 @@
+1. What are the different data types in JavaScript?
+Answer:
+JavaScript has 7 primitive data types:
+
+String: Represents a sequence of characters. Example: "Hello".
+Number: Represents both integers and floating-point numbers. Example: 42, 3.14.
+Boolean: Represents true or false.
+Undefined: Represents a variable that has been declared but not assigned a value.
+Null: Represents the intentional absence of any value.
+Symbol (ES6): Represents a unique and immutable value.
+BigInt (ES2020): Represents integers with arbitrary precision.
+Additionally, there is one non-primitive data type:
+
+Object: Can store collections of data and more complex entities.
+Follow-up: Can you explain the difference between primitive and non-primitive data types?
+
+Primitive values are immutable and are compared by value. Each primitive value is immutable and has no methods.
+Non-primitive (reference) values, like objects and arrays, are mutable and compared by reference.
+2. What is the difference between null and undefined?
+Answer:
+
+undefined means a variable has been declared but not assigned a value.
+null is an assignment value that represents no value or "nothing".
+Follow-up: How would you check for null and undefined values?
+
+Using === for strict equality checks: value === null or value === undefined.
+Using value == null will check for both null and undefined.
+3. Explain type coercion in JavaScript.
+Answer:
+Type coercion is the automatic or implicit conversion of values from one data type to another (e.g., from string to number).
+
+Example: console.log('5' - 2) results in 3 because '5' is coerced to a number.
+Follow-up: What are some examples of implicit type coercion?
+
+'5' + 2 results in '52' (string concatenation).
+true + 1 results in 2 (Boolean true coerces to 1).
+null + 5 results in 5.
+4. What does the typeof operator do?
+Answer:
+The typeof operator returns a string indicating the type of the operand.
+
+Examples:
+typeof 42 // "number"
+typeof 'hello' // "string"
+Follow-up: How does typeof null behave, and why?
+
+typeof null returns 'object'. This is considered a bug in JavaScript but retained for backward compatibility.
+5. How would you check if a variable is an array?
+Answer:
+You can check if a variable is an array using Array.isArray(variable).
+
+Follow-up: Compare Array.isArray() with instanceof Array.
+
+Array.isArray() is the recommended way to check for arrays as it works reliably across different execution contexts (e.g., iframes).
+variable instanceof Array works only if variable was created in the same execution context.
+6. What are falsy values in JavaScript?
+Answer:
+Falsy values are values that evaluate to false in a Boolean context. There are 7 falsy values:
+
+false
+0 (zero)
+'' or "" (empty string)
+null
+undefined
+NaN
+0n (BigInt zero)
+Follow-up: What are the potential issues with falsy values in condition checks?
+
+Potentially unexpected behavior can occur when falsy values are used in conditionals. For example, if (0) {} or if ("") {} will not execute, as 0 and empty strings are falsy.
+7. Explain how to perform type conversion (casting) in JavaScript.
+Answer:
+You can convert data types using:
+
+Number(): Converts values to numbers. E.g., Number('42') // 42
+String(): Converts values to strings. E.g., String(42) // "42"
+Boolean(): Converts values to booleans. E.g., Boolean(1) // true
+Follow-up: What happens when you convert a string to a number using Number(), parseInt(), or parseFloat()?
+
+Number('123') results in 123.
+parseInt('123abc') results in 123 (stops at first non-digit).
+parseFloat('123.45abc') results in 123.45.
+8. How does == differ from === in JavaScript?
+Answer:
+
+== (loose equality) compares values after converting them to a common type (type coercion).
+=== (strict equality) compares values without any type conversion, so both the type and value must match.
+Follow-up: Why would you choose === over ==?
+
+To avoid unexpected type coercion and ensure precise comparisons.
+9. How can you check if a variable is an object, including arrays and null?
+Answer:
+
+To check if a variable is an object: typeof variable === 'object' && variable !== null.
+To distinguish between arrays: Array.isArray(variable).
+Follow-up: What is the best way to differentiate between objects, arrays, and null?
+
+Array.isArray(): Checks for arrays.
+typeof variable === 'object' && variable !== null && !Array.isArray(variable): Checks for objects.
+10. What is NaN and how do you check if a value is NaN?
+Answer:
+
+NaN (Not-A-Number) is a special value indicating an invalid number result.
+Check if a value is NaN using Number.isNaN(value).
+Follow-up: Why does typeof NaN return number?
+
+This is part of JavaScript's type system quirks, where NaN is considered a "number" even though it represents a failed mathematical operation.
+11. Explain the instanceof operator and how it works.
+Answer:
+
+instanceof checks whether an object is an instance of a specific constructor or class.
+Example: [] instanceof Array // true
+Follow-up: How does instanceof differ from typeof?
+
+instanceof works with objects and can determine their specific prototype chain, while typeof works with primitive types and functions.
+12. How do you differentiate between primitive values and objects?
+Answer:
+
+Primitive values are compared by value and are immutable.
+Objects are compared by reference and are mutable.
+13. What is the difference between mutable and immutable data types?
+Answer:
+
+Mutable types (e.g., objects, arrays) can be changed after creation.
+Immutable types (e.g., strings, numbers) cannot be altered once created.
+14. How does JavaScript handle type conversions when using mathematical operators with mixed data types?
+Answer:
+
+Mathematical operations (e.g., +, -, *, /) often convert operands to numbers.
+Example: '5' - 2 results in 3 (string '5' is converted to number).
+15. How can you deeply check the equality of objects?
+Answer:
+
+Deep equality can be checked using recursive functions or libraries like Lodash (_.isEqual()).
+Follow-up: Why is === insufficient for comparing objects?
+
+=== checks object references, not values, so two objects with identical properties but different references are not considered equal.
+Advanced Questions Answers:
+Limitations of typeof:
+
+typeof null // "object" (quirk).
+typeof [] // "object" (arrays are also considered objects).
+typeof function() {}:
+
+Functions are objects but have a specific typeof return value of 'function'.
+console.log([] + {}) and console.log({} + []):
+
+[] + {} results in "[object Object]".
+{} behaves as a code block followed by [], so it results in 0.
