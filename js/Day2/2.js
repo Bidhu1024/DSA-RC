@@ -1,7 +1,7 @@
-const a = 10;
+let a = 10;
 {
  a = 6
     console.log(a)
 }
 a=5
-console.log(a)  //ReferenceError: a is not defined
+console.log(this)  //ReferenceError: a is not defined

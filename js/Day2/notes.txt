@@ -1,0 +1,169 @@
+1. What are the different ways to declare variables in JavaScript?
+JavaScript provides three ways to declare variables: var, let, and const.
+
+var:
+
+Function-scoped (accessible within the function in which it is declared).
+Hoisted to the top of its scope but initialized with undefined.
+Allows re-declaration and reassignment.
+Example:
+
+javascript
+Copy code
+function testVar() {
+    console.log(a); // undefined (hoisted but not initialized)
+    var a = 10;
+    console.log(a); // 10
+}
+testVar();
+let:
+
+Block-scoped (only accessible within the block {} in which it is declared).
+Hoisted but stays in the Temporal Dead Zone (TDZ) until initialized.
+Does not allow re-declaration within the same scope.
+Example:
+
+javascript
+Copy code
+{
+    let b = 20;
+    console.log(b); // 20
+}
+console.log(b); // ReferenceError: b is not defined
+const:
+
+Block-scoped, similar to let.
+Must be initialized during declaration.
+Cannot be reassigned or re-declared.
+Example:
+
+javascript
+Copy code
+const c = 30;
+c = 40; // TypeError: Assignment to constant variable.
+2. What is variable hoisting? How does it behave for var, let, and const?
+Hoisting is JavaScript's behavior of moving declarations to the top of their scope during compilation.
+
+var: Hoisted and initialized with undefined.
+
+javascript
+Copy code
+console.log(a); // undefined
+var a = 10;
+let and const: Hoisted but not initialized, resulting in a Temporal Dead Zone (TDZ) until the code reaches the variable declaration.
+
+javascript
+Copy code
+console.log(b); // ReferenceError
+let b = 20;
+3. What is the difference between undefined and not defined?
+undefined: A variable is declared but not assigned a value.
+
+javascript
+Copy code
+let a;
+console.log(a); // undefined
+not defined: A variable is not declared at all.
+
+javascript
+Copy code
+console.log(b); // ReferenceError: b is not defined
+4. Explain block scope and function scope in JavaScript.
+Block Scope: Variables declared with let and const are only accessible within the block {} in which they are declared.
+
+javascript
+Copy code
+{
+    let x = 10;
+    const y = 20;
+}
+console.log(x); // ReferenceError
+console.log(y); // ReferenceError
+Function Scope: Variables declared with var are accessible throughout the function in which they are declared.
+
+javascript
+Copy code
+function scopeTest() {
+    var z = 30;
+    console.log(z); // 30
+}
+console.log(z); // ReferenceError
+5. What is the global object, and how are global variables handled in JavaScript?
+In browsers, the global object is window.
+In Node.js, it is global.
+Global variables declared using var become properties of the global object.
+
+javascript
+Copy code
+var a = 10;
+console.log(window.a); // 10
+6. What is closure in JavaScript, and how is it related to scoping?
+A closure is a function that retains access to its outer scope even after the outer function has executed.
+
+Example:
+
+javascript
+Copy code
+function outer() {
+    let count = 0;
+    return function inner() {
+        count++;
+        console.log(count);
+    };
+}
+const counter = outer();
+counter(); // 1
+counter(); // 2
+7. What are IIFEs (Immediately Invoked Function Expressions)?
+An IIFE is a function that executes immediately after being defined. It helps create a private scope.
+
+javascript
+Copy code
+(function() {
+    let a = 10;
+    console.log(a); // 10
+})();
+console.log(a); // ReferenceError
+8. How does the this keyword interact with variable scoping?
+The value of this depends on how the function is invoked.
+
+In global scope: this refers to the global object.
+In strict mode: this is undefined.
+In arrow functions: this is lexically inherited from the parent scope.
+9. What is the Temporal Dead Zone (TDZ)?
+The TDZ is the phase where let and const variables are hoisted but cannot be accessed.
+
+Example:
+
+javascript
+Copy code
+console.log(a); // ReferenceError
+let a = 10;
+10. What is the scope chain in JavaScript?
+The scope chain is a mechanism to resolve variable names in nested functions, starting from the innermost to the outermost scope.
+
+Example:
+
+javascript
+Copy code
+function outer() {
+    let a = 10;
+    function inner() {
+        console.log(a); // 10
+    }
+    inner();
+}
+outer();
+11. Explain shadowing.
+Shadowing occurs when a variable in an inner scope has the same name as a variable in an outer scope.
+
+Example:
+
+javascript
+Copy code
+let x = 10;
+{
+    let x = 20;
+    console.log(x); // 20 (inner variable shadows outer variable)
+}
+console.log(x); // 10
