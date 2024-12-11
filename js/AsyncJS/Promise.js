@@ -15,3 +15,11 @@ const promise = new Promise((resolve,reject)=>{
 })
 
 promise.then(data=>console.log(data)).catch(err=>console.log(err)).finally(()=>console.log("promise is settled"))
+
+
+const promise1 = Promise.resolve(10);
+const promise2 = Promise.reject("Error!!!")
+
+Promise.all([promise1,promise2])
+.then(value=>console.log(value))
+.catch(err=>console.log(err))
