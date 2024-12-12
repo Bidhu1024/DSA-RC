@@ -38,3 +38,9 @@ const promiseRace2 = new Promise((resolve,reject)=>{
 })
 
 Promise.race([promiseRace1,promiseRace2]).then(value=>console.log(value)).catch(err=>console.log(err))
+
+const promiseany1 = Promise.reject("Error1");
+const promiseany2 = Promise.resolve("Success");
+const promiseany3 = Promise.resolve("Done");
+
+Promise.any([promiseany1,promiseany2,promiseany3]).then(val=>console.log(val)).catch(err=>console.log(err))
