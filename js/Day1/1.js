@@ -11,7 +11,7 @@ console.log(false + null)
 console.log(typeof []) //object
 console.log(typeof {}) //object
 
-console.log({} =={})
-console.log([]+{})
+console.log({} =={});
+console.log([]+{});
 
 
