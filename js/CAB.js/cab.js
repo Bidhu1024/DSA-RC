@@ -19,3 +19,8 @@ printName.call(name2,"Salipur")
 //Apply-> Function.apply()
 
 printName.apply(name2,["Bbsr"]) //--> first argument will be the object and unlike call we will pass everything in an array.
+
+
+//Bind
+let res = printName.bind(name2,'salipur')
+res() //->we can use it wherever we need it
