@@ -3,13 +3,15 @@ let name = {
     lastname:"Bhushan",
    
 }
- function printName(){
-    console.log(this.firstname + " "+ this.lastname)
+ function printName(hometown){
+    console.log(this.firstname + " "+ this.lastname + " "+ hometown)
 }
-printName.call(name)
+printName.call(name,"cuttack")
 
 let name2 = {
     firstname:"Sikun",
     lastname:"Gahan"
 }
-printName.call(name2)
+printName.call(name2,"Salipur")
+
+// we can pass arguments also to the functions
