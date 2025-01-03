@@ -15,3 +15,7 @@ let name2 = {
 printName.call(name2,"Salipur")
 
 // we can pass arguments also to the functions
+
+//Apply-> Function.apply()
+
+printName.apply(name2,["Bbsr"]) //--> first argument will be the object and unlike call we will pass everything in an array.
